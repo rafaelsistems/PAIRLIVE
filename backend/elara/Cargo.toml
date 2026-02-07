@@ -1,0 +1,49 @@
+[package]
+name = "pairlive-elara"
+version = "1.0.0"
+edition = "2021"
+description = "PAIRLIVE ELARA Protocol Integration - Komunikasi Real-time Native"
+authors = ["PAIRLIVE Team"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# ELARA Protocol Core
+elara-core = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-wire = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-crypto = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-time = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-state = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-transport = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-runtime = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+elara-msp = { git = "https://github.com/rafaelsistems/ELARA-Protocol.git", branch = "main" }
+
+# Node.js bindings
+napi = { version = "2", features = ["async", "tokio_rt"] }
+napi-derive = "2"
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# UUID
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto = true
+opt-level = 3
