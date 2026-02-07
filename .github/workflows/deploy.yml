@@ -1,10 +1,6 @@
 name: CD - Deploy to Production
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'backend/**'
   workflow_dispatch:
     inputs:
       environment:
